@@ -5,7 +5,7 @@ dotenv.config()
 
 const verifyToken = (req, res, next) => {
     const token = req.headers['x-access-token']
-    if (token.length == 0) {
+    if (token.length != 0) {
         console.log(token)
         jwt.verify(token, process.env.USER_KEY, (err, decodedToken) => {
             if (err) {

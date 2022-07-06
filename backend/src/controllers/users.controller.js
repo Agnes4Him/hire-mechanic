@@ -2,6 +2,7 @@ const Users = require('../models/users.model.js')
 const dotenv = require('dotenv')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+const Mechanic = require('../models/mechanics.model.js')
 
 dotenv.config()
 
@@ -65,22 +66,48 @@ exports.loginUser = (req, res) => {
                     if (response === false) {
                         res.status(400).json({message:"password_incorrect"})
                     }else {
+                        //Create token for regular user
                         jwt.sign({user:user}, process.env.USER_KEY, (err, token) => {
                             if (err) {
                                 console.log(err)
                                 res.status(500).json({message:"internal_error"})
                             }else {
-                                res.status(200).json({message:token})
+                                //Create token if user is a mechanic
+                                Mechanic.findOne({userid:user._id})
+                                .then((data) => {
+                                    if (data) {
+                                        jwt.sign({data}, process.env.MECHANIC_KEY, (err, mechtoken) => {
+                                            if (err) {
+                                                console.log(err)
+                                                res.status(500).json({message:"internal_error"})
+                                            }else {
+                                                res.status(200).json({message:"mech_found", mechtoken:mechtoken, token:token, userid:user._id, mech:data})
+                                            }
+                                        })
+                                    }else {
+                                        res.status(200).json({message:"just_user", token:token})
+                                    }
+                                })
+                                .catch((err) => {
+                                    console.log(err)
+                                    res.status(500).json({message:"internal_error"})
+                                })
                             }
                         })
+                    
                     }
                 })
                 .catch((err) => {
                     console.log(err)
                     res.status(500).json({message:"internal_error"})
                 })
+                
             }
             
+        })
+        .catch((err) => {
+            console.log(err)
+            res.status(500).json({message:"internal_error"})
         })
     }
 }
