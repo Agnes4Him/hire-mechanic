@@ -27,7 +27,7 @@ exports.signupUser = (req, res) => {
                         user.save()
                         .then((user) => {
                             console.log(user)
-                            jwt.sign({user:user}, process.env.USER_KEY, (err, token) => {
+                            jwt.sign({user:user}, process.env.USER_KEY, {expiresIn: '24h'}, (err, token) => {
                                 if (err) {
                                     console.log(err)
                                     res.status(500).json({message:"internal_error"})
@@ -67,7 +67,7 @@ exports.loginUser = (req, res) => {
                         res.status(400).json({message:"password_incorrect"})
                     }else {
                         //Create token for regular user
-                        jwt.sign({user:user}, process.env.USER_KEY, (err, token) => {
+                        jwt.sign({user:user}, process.env.USER_KEY, {expiresIn: '24h'}, (err, token) => {
                             if (err) {
                                 console.log(err)
                                 res.status(500).json({message:"internal_error"})
@@ -76,7 +76,7 @@ exports.loginUser = (req, res) => {
                                 Mechanic.findOne({userid:user._id})
                                 .then((data) => {
                                     if (data) {
-                                        jwt.sign({data}, process.env.MECHANIC_KEY, (err, mechtoken) => {
+                                        jwt.sign({data}, process.env.MECHANIC_KEY, {expiresIn: '24h'}, (err, mechtoken) => {
                                             if (err) {
                                                 console.log(err)
                                                 res.status(500).json({message:"internal_error"})

@@ -80,7 +80,7 @@ exports.addMechanic = (req, res) => {
             mechanic.save()
             .then((result) => {
                 console.log(result)
-                jwt.sign({result:result}, process.env.MECHANIC_KEY, (err, mechtoken) => {
+                jwt.sign({result:result}, process.env.MECHANIC_KEY, {expiresIn: '24h'}, (err, mechtoken) => {
                     if (err) {
                         console.log(err)
                         res.status(500).json({message:"internal_error"})
@@ -141,4 +141,28 @@ exports.deleteMechanic = (req, res) => {
         console.log(err)
         res.status(500).json({message:"internal_error"})
     })
+}
+
+exports.checkMyToken = (req, res) => {
+    if (req.userid) {
+        res.status(200).json({message:"grant_access"})
+    }
+}
+
+exports.checkMechToken = (req, res) => {
+    const mechtoken = req.body.mechtoken
+    if (mechtoken) {
+        //console.log(mechtoken)
+        jwt.verify(mechtoken, process.env.MECHANIC_KEY, (err, decodedMechToken) => {
+            if (err) {
+                res.status(400).json({message:"token_expired"})
+            }else {
+                console.log(decodedMechToken)
+                res.status(200).json({message:"grant_access"})
+            }
+        })
+    }else {
+        console.log("No token")
+        res.status(400).json({message:"no_token"})        
+    }
 }
