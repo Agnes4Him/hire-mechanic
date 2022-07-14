@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import SignupLogin from "../components/SignupLogin";
+import ResetPassword from '../components/ResetPassword';
 
 const Signup = () => {
     const [email, setEmail] = useState('')
@@ -157,6 +158,7 @@ const Signup = () => {
             </form>
             <div className="login-option">
                 <SignupLogin onModify = {handleModify} signupLogin = {signupLogin} signed = {signed} />
+                <ResetPassword />
             </div>
             </div>
             {isError && errorMessage && <div className="error-message">{errorMessage}</div>}

@@ -43,7 +43,7 @@ body {
 
   list-style-type:none;
   display:flex;
-  width:31%;
+  width:28%;
   justify-content:space-between;
   align-items: center;
 }
@@ -143,25 +143,19 @@ body {
   color:#f5f5f5;
 }
 
-.signup-section {
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  height:100vh;
-}
-
 .signup-container {
-  width:45vw; 
+  width:38vw; 
   margin:auto;
-  height:60vh;
+  height:70vh;
   display:flex;
   flex-direction:column;
   justify-content:center;
+  padding-bottom:3rem;
 }
 
 .signup-container form {
   background-color:#555;
-  margin-top:7rem;
+  margin-top:12rem;
   margin-bottom:1rem;
   padding-left:2rem;
   padding-top:2rem;
@@ -171,17 +165,15 @@ body {
 }
 
 .signup-container input {
-  width:80%;
+  width:95%;
   height:7vh;
   margin-bottom:2rem;
-  margin-top:0.75rem;
+  margin-top:0.5rem;
   border:none;
 }
 
 .submit-signup {
-  width:7vw;
-  padding-top:0.75rem;
-  padding-bottom:0.75rem;
+  padding:0.75rem;
   border:none;
   background-color:#8d9612;
   border-radius:0.75rem;
@@ -196,7 +188,19 @@ body {
 
 .login-option {
   margin-bottom:2rem;
-  text-align: center;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.reset-password {
+  margin-left:3rem;
+  color:#bd3aa8;
+  cursor: pointer;
+}
+
+.reset-password:hover {
+  color:#ee94df;
 }
 
 .modify-signup {
@@ -232,25 +236,25 @@ body {
   background-color:black;
 }
 
-.form-container {
+.join-section .form-container {
 
   margin:auto;
   width:80vw;
-  height:80vh;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding-top:18rem;
+  padding-top:5rem;
+  padding-bottom:3rem;
 }
 
-.join-form {
+.join-section .join-form {
 
   width:50%;
   background-color:#bd3aa8;
   padding-top:1rem;
 }
 
-.join-text {
+.join-section .join-text {
 
   align-items:center;
   justify-content:center;
@@ -260,7 +264,7 @@ body {
   color:#787d33;
 }
 
-form {
+.join-section .join-form form {
 
   display:flex;
   flex-direction:column;
@@ -575,6 +579,123 @@ form {
   text-align:center;
 }
 
+@media screen and (max-width: 1024px){
+  .nav-components ul {
+    width:35%;
+  } 
+  
+  .home-text {
+    width:60%;
+  }
+
+  .join-section .join-form {
+    width:80%;
+  }
+
+  .join-section .join-text {
+    font-size:2rem;
+    padding-right:1rem;
+  }
+
+  .hire-container {
+    text-align:center;
+  }
+
+  .hire-form {
+    margin:auto;
+    width:70%;
+  }
+
+  .hire-container .hireErrorMessage {
+    top:17vh;
+    right:30vw;
+  }
+
+  .search-results {
+    position:relative;
+    top:10vh;
+    left:20vw;
+  }
+
+  .mechanic-block {
+    width:45vw;
+  }
+
+  .signup-container {
+    width:47vw;
+  }
+}
+
+@media screen and (max-width: 768px){
+  .nav-components h2 {
+    font-size:1rem;
+  }
+  
+  .nav-components .star {
+    font-size:1.5rem;
+  }
+
+  .nav-components ul {
+    width:45%;
+  }
+
+  .nav-components li {
+    font-size:0.9rem;
+  }
+
+  .nav-components ul .logout-button {
+    font-size:0.8rem;
+  }
+
+  .nav-components .dashboard {
+    font-size:0.75rem;
+    padding:0.5rem 0.75rem 0.5rem 0.75rem;
+  }
+
+  .home-text {
+    width:80%;
+    top:65%;
+  }
+
+  .home-content h1 {
+    font-size:1.5rem;
+  }
+
+  .join-section .join-form {
+    width:100%;
+  }
+
+  .join-section .join-text {
+    font-size:1.5rem;
+    width:55%;
+  }
+
+  .hire-container h2 {
+    font-size:1.5rem;
+  }
+
+  .hire-form {
+    width:80%;
+  }
+
+  .search-results {
+    left:10vw;
+  }
+
+  .mechanic-block {
+    width:55vw;
+  }
+
+  .signup-container {
+    width:70vw;
+  }
+
+  .reset-password {
+    margin-left:1rem;
+  }
+ 
+}
+
 @media screen and (max-width: 480px){
   .nav-components h2 {
     font-size:1rem;
@@ -603,6 +724,7 @@ form {
 
   .home-text {
     width:80%;
+    top:75%;
   }
 
   .home-image {
@@ -611,14 +733,46 @@ form {
 
   .home-content h1 {
     font-size:2rem;
+
   }
 
-}
+  .join-section .form-container {
+    flex-direction:column;
+    padding-top:2rem;
+    padding-bottom:0.5rem;
+  }
 
-@media screen and (max-width: 768px){
-  
-}
+  .join-section .join-form {
+    width:95%;
+  }
 
-@media screen and (max-width: 1024px){
-  
+  .join-section .join-text {
+    font-size:2rem;
+    width:80%;
+    text-align:center;
+  }
+
+  .hire-form {
+    width:90%;
+  }
+
+  .search-results {
+    left:6vw;
+  }
+
+  .mechanic-block {
+    width:67vw;
+  }
+
+  .mechanic-block .names {
+    width:45%;
+  }
+
+  .signup-container {
+    width:85vw;
+  }
+
+  .reset-password {
+    margin-left:1rem;
+  }
 }
