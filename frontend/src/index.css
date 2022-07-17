@@ -131,15 +131,58 @@ body {
   line-height:2.25rem;
 }
 
-.copyright {
+.footer-container {
 
   background-color:#b9c23f;
   display:flex;
-  justify-content:center;
+  flex-direction:column;
   align-items:center;
   margin-top:6rem;
-  padding:1rem 0 1rem 0;
+  padding-top:1rem;
+}
+
+.contact-socials {
+  display:flex;
+  justify-content:space-between;
+  width:60vw;
   font-size:1rem;
+}
+
+.contact-socials hr {
+  width:5vw;
+  border:1px solid #ee94df;
+}
+
+.contact, .socials, .email {
+  text-align:center;
+}
+
+.contact .contact-text, .socials p, .email .email-text {
+  color:#f5f5f5;
+}
+
+.socials div {
+  display:flex;
+  justify-content:space-between;
+  width:8vw;
+  margin-top:-0.5rem;
+}
+
+.socials div p {
+  color:#bd3aa8;
+  font-size:1.15rem;
+}
+
+.socials div p:hover {
+  color:#ee94df;
+}
+
+.contact-number, .email-main {
+  color:#bd3aa8;
+}
+
+.copyright {
+  font-size:0.9rem;
   color:#f5f5f5;
 }
 
@@ -215,20 +258,18 @@ body {
 }
 
 .signup-section .error-message {
-  position:absolute;
-  right:3vw;
-  top:40vh;
   color:red;
-  padding:1rem;
   font-weight:bold;
+  margin:auto;
+  text-align:center;
+  padding-top:1rem;
 }
 
 .signup-section .success-message {
-  position:absolute;
-  right:3vw;
-  top:40vh;
   color:green;
   font-weight:bold;
+  margin:auto;
+  text-align:center;
   padding:1rem;
 }
   
@@ -624,6 +665,14 @@ body {
   .signup-container {
     width:47vw;
   }
+
+  .socials div {
+    width:10vw;
+  }
+
+  .socials div p {
+    font-size:1rem;
+  }
 }
 
 @media screen and (max-width: 768px){
@@ -692,6 +741,14 @@ body {
 
   .reset-password {
     margin-left:1rem;
+  }
+
+  .contact-socials {
+    width:80vw;
+  }
+
+  .socials div {
+    width:13vw;
   }
  
 }
@@ -774,5 +831,14 @@ body {
 
   .reset-password {
     margin-left:1rem;
+  }
+
+  .contact-socials {
+    width:90vw;
+    font-size:0.9rem;
+  }
+
+  .socials div {
+    width:15vw;
   }
 }

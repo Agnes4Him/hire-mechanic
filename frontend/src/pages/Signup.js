@@ -139,6 +139,8 @@ const Signup = () => {
     return (
         <div className="signup-section">
             <Navbar />
+            {isError && errorMessage && <div className="error-message">{errorMessage}</div>}
+            {!isError && successMessage && <div className="success-message">{successMessage}</div>}
             <div className="signup-container">
             <form className="signup" onSubmit = {handleSignupLogin}>
                 <label>Enter your email address</label>
@@ -161,8 +163,6 @@ const Signup = () => {
                 <ResetPassword />
             </div>
             </div>
-            {isError && errorMessage && <div className="error-message">{errorMessage}</div>}
-            {!isError && successMessage && <div className="success-message">{successMessage}</div>}
             <Footer />
         </div>
     )

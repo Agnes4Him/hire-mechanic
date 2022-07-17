@@ -4,6 +4,7 @@ import Join from './pages/Join';
 import Hire from './pages/Hire';
 import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
+import ResetEmail from './pages/ResetEmail';
 import NotFound from './pages/NotFound';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Route path="/join" element={ <Join />} />
         <Route path="/hire" element={ <Hire />} />
         <Route path="/signup" element={ <Signup />} />
+        <Route path="/resetemail" element={ <ResetEmail />} />
         <Route path="/dashboard/:id" element={ <Dashboard /> } />
         <Route path="*" element={ <NotFound />} />
       </Routes>
