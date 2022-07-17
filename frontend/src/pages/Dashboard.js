@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import Navbar from "../components/Navbar";
+import MobileNavbar from "../components/MobileNavbar";
 import DashboardHeading from "../components/DashboardHeading";
 import MechProfile from "../components/MechProfile";
 import Footer from "../components/Footer";
@@ -43,6 +44,7 @@ const Dashboard = () => {
     return (
         <div className="mech-dashboard">
             <Navbar />
+            <MobileNavbar />
             <DashboardHeading name={mechData.firstname} />
             <MechProfile mechData={mechData} mechEmail={mechEmail} coords={coords} />
             <Footer />

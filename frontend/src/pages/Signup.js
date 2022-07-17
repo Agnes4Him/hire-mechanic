@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import MobileNavbar from "../components/MobileNavbar";
 import Footer from "../components/Footer";
 import SignupLogin from "../components/SignupLogin";
 import ResetPassword from '../components/ResetPassword';
@@ -139,6 +140,7 @@ const Signup = () => {
     return (
         <div className="signup-section">
             <Navbar />
+            <MobileNavbar />
             {isError && errorMessage && <div className="error-message">{errorMessage}</div>}
             {!isError && successMessage && <div className="success-message">{successMessage}</div>}
             <div className="signup-container">

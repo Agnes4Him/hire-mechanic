@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from "../components/Navbar";
+import MobileNavbar from "../components/MobileNavbar";
 import Footer from "../components/Footer";
 
 const Join = () => {
@@ -82,6 +83,7 @@ const Join = () => {
     return (
         <div className="join-section">
             <Navbar />
+            <MobileNavbar />
             <div className="form-container">
                 <div className="join-text">
                     <p>Join Our Team!</p>

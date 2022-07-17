@@ -1,4 +1,5 @@
 import Navbar from "../components/Navbar";
+import MobileNavbar from "../components/MobileNavbar";
 import Footer from "../components/Footer";
 import { useState } from 'react';
 import MechanicsList from '../components/MechanicsList'
@@ -57,6 +58,7 @@ const Hire = () => {
     return (
         <div className="hire-section">
             <Navbar />
+            <MobileNavbar />
                 <div className="hire-container">
                     <h2>Hire A Mechanic In Your Area!</h2>
                     <div className="hire-form">
