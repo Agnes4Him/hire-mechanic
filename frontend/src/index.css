@@ -314,16 +314,12 @@ body {
 }
 
 .join-section .join-form {
-
   width:50%;
   background-color:#bd3aa8;
   padding-top:1rem;
 }
 
 .join-section .join-text {
-
-  align-items:center;
-  justify-content:center;
   width:50%;
   font-size:2.5rem;
   font-weight:bold;
@@ -577,35 +573,30 @@ body {
   color:#bd3aa8;
 }
 
-.mech-profile .edit-error {
-  position:absolute;
-  right:4vw;
-  top:50vh;
+.profile-container .edit-error {
   background-color:transparent;
   color:red;
   font-size:1.25rem;
   font-weight:bold;
-  padding:1rem;
+  text-align:center;
 }
 
-.mech-profile .edit-success {
-  position:absolute;
-  right:2vw;
-  top:50vh;
+.profile-container .edit-success {
   background-color:transparent;
   color:green;
   padding:1rem;
   font-size:1.25rem;
   font-weight:bold;
+  text-align:center;
 }
 
-.modal {
-  position:absolute;
-  right:3vw;
-  top:50vh;
+.dashboard-modal {
   background-color:rgba(128, 128, 128, 0.479);
   color:#ff8a8a;
   font-weight:bold;
+  margin:auto;
+  width:35vw;
+  text-align:center;
   padding:1rem;
 }
 
@@ -659,7 +650,7 @@ body {
   }
 
   .join-section .join-text {
-    font-size:2rem;
+    font-size:1.5rem;
     padding-right:1rem;
   }
 
@@ -697,6 +688,22 @@ body {
 
   .socials div p {
     font-size:1rem;
+  }
+
+  .join-section .error-message, .join-section .success-message {
+    left:5vw;
+  }
+
+  .mech-profile {
+    width:75vw;
+  }
+
+  .mech-dashboard h1 {
+    font-size:1.5rem;
+  }
+
+  .dashboard-modal {
+    width:45vw;
   }
 }
 
@@ -740,7 +747,7 @@ body {
   }
 
   .join-section .join-text {
-    font-size:1.5rem;
+    font-size:1.25rem;
     width:55%;
   }
 
@@ -774,6 +781,38 @@ body {
 
   .socials div {
     width:13vw;
+  }
+
+  .join-section .error-message, .join-section .success-message {
+    left:28vw;
+    top:13vh;
+  }
+
+  .mech-profile {
+    width:93vw;
+    font-size:0.9rem;
+  }
+
+  .mech-profile td, th {
+    padding-left:1.5rem;
+    padding-right:1.5rem;
+  }
+
+  .edit-profile .change-available {
+    font-size:1rem;
+  }
+
+  .delete-profile .delete-account {
+    padding:0.5rem;
+    font-size:0.8rem;
+  }
+
+  .mech-dashboard h1 {
+    font-size:1.25rem;
+  }
+
+  .dashboard-modal {
+    width:60vw;
   }
  
 }
@@ -856,6 +895,17 @@ body {
     color:#b9c23f;
   }
 
+  .mobile-logout {
+    border:none;
+    font-size:1rem;
+    color:#8d9612;
+    background:transparent;
+  }
+
+  .mobile-logout:hover {
+    color:#b9c23f;
+  }
+
   .home-text {
     width:80%;
     top:75%;
@@ -884,6 +934,10 @@ body {
     font-size:2rem;
     width:80%;
     text-align:center;
+  }
+
+  .join-section .error-message, .join-section .success-message {
+    top:17vh;
   }
 
   .hire-form {
@@ -917,5 +971,13 @@ body {
 
   .socials div {
     width:15vw;
+  }
+
+  .mech-profile {
+    width:95vw;
+  }
+
+  .dashboard-modal {
+    width:65vw;
   }
 }

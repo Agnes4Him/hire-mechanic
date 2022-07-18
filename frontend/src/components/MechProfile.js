@@ -74,7 +74,8 @@ const MechProfile = ({mechData, mechEmail, coords}) => {
     }
 
     return (
-        <div className="mech-profile">           
+        <div className="profile-container">
+            <div className="mech-profile">           
             <table>
                <tbody>
                 <tr>
@@ -110,10 +111,13 @@ const MechProfile = ({mechData, mechEmail, coords}) => {
               </tbody>
             </table>
             <DeleteAccountButton onDelete={handleDelete} />
+        </div>
+        <br></br>
             {editError && <div className="edit-error">{editError}</div>}
             {editSuccess && <div className="edit-success">{editSuccess}</div>}
             {showModal && <DeleteModal onCancel={handleCancel} onConfirm={handleConfirm} />}
         </div>
+        
     )
 }
 
