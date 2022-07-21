@@ -2,6 +2,7 @@ const Users = require('../models/users.model.js')
 const dotenv = require('dotenv')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+const Sib = require('sib-api-v3-sdk')
 const Mechanic = require('../models/mechanics.model.js')
 
 dotenv.config()
@@ -110,4 +111,64 @@ exports.loginUser = (req, res) => {
             res.status(500).json({message:"internal_error"})
         })
     }
+}
+
+exports.confirmEmail = (req, res) => {
+    const email = req.body.confirmEmail
+    Users.findOne({email:email})
+    .then((user) => {
+        if (!user) {
+            res.status(400).json({message:"no_user"})
+        }else {
+            const client = Sib.ApiClient.instance
+            const apiKey = client.authentications['api-key']
+            apiKey.apiKey = process.env.EMAIL_KEY
+            const tranEmailApi = new Sib.TransactionalEmailsApi()
+            const sender = {
+                email: 'ojuhagnes@gmail.com',
+                name: 'MechaStar',
+            }
+            const receivers = [
+                {
+                    email: email,
+                },
+            ]
+
+            tranEmailApi.sendTransacEmail({
+                sender,
+                to: receivers,
+                subject: 'Reset Password',
+                htmlContent: `<h3>Hello</h3><p>Did you ask to reset your password?</p><p>If yes, click this <a href="{{params.link}}" style="text-decoration:none; color:green">Link</a></p><p>Otherwise, kindly ignore this email message</p>`,
+                params: {
+                    link: 'http://localhost:3000/confirmpassword/' + email,
+                },
+            })
+            .then((result) => {
+                console.log(result)
+                res.status(200).json({message:"user_exist"})
+            })
+            .catch((err) => {
+                console.log(err)
+                res.status(500).json({message:"internal_error"})
+            })
+        }
+    })
+    .catch((err) => {
+        console.log(err)     
+        res.status(500).json({message:"internal_error"})
+    })
+}
+
+exports.resetPassword = (req, res) => {
+    const email = req.params.email
+    const newPassword = req.body.newPassword
+    Users.findOneAndUpdate({email:email}, {password:newPassword}, {new:true})
+    .then((result) => {
+        console.log("Password reset successful")
+        res.status(200).json({message:"reset_success"})
+    })
+    .catch((err) => {
+        console.log(err)
+        res.status(500).json({message:"internal_error"})
+    })
 }

@@ -6,6 +6,7 @@ import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
 import ResetEmail from './pages/ResetEmail';
 import NotFound from './pages/NotFound';
+import ConfirmPassword from './pages/ConfirmPassword';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/signup" element={ <Signup />} />
         <Route path="/resetemail" element={ <ResetEmail />} />
         <Route path="/dashboard/:id" element={ <Dashboard /> } />
+        <Route path="/confirmpassword/:email" element={ <ConfirmPassword />} />
         <Route path="*" element={ <NotFound />} />
       </Routes>
     </div>
