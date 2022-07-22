@@ -32,7 +32,7 @@ const MechProfile = ({mechData, mechEmail, coords}) => {
                 mechData.available = data.result.available
                 setTimeout(() => {
                     setEditSuccess('')                    
-                }, 2000);
+                }, 1000);
             }
         })      
     }

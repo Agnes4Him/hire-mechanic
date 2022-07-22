@@ -18,7 +18,7 @@ function App() {
         <Route path="/signup" element={ <Signup />} />
         <Route path="/resetemail" element={ <ResetEmail />} />
         <Route path="/dashboard/:id" element={ <Dashboard /> } />
-        <Route path="/confirmpassword/:email" element={ <ConfirmPassword />} />
+        <Route path="/confirmpassword/:id" element={ <ConfirmPassword />} />
         <Route path="*" element={ <NotFound />} />
       </Routes>
     </div>

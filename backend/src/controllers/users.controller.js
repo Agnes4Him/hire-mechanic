@@ -120,6 +120,7 @@ exports.confirmEmail = (req, res) => {
         if (!user) {
             res.status(400).json({message:"no_user"})
         }else {
+            console.log(user)
             const client = Sib.ApiClient.instance
             const apiKey = client.authentications['api-key']
             apiKey.apiKey = process.env.EMAIL_KEY
@@ -140,7 +141,7 @@ exports.confirmEmail = (req, res) => {
                 subject: 'Reset Password',
                 htmlContent: `<h3>Hello</h3><p>Did you ask to reset your password?</p><p>If yes, click this <a href="{{params.link}}" style="text-decoration:none; color:green">Link</a></p><p>Otherwise, kindly ignore this email message</p>`,
                 params: {
-                    link: 'http://localhost:3000/confirmpassword/' + email,
+                    link: 'http://localhost:3000/confirmpassword/' + user._id,
                 },
             })
             .then((result) => {
@@ -160,15 +161,23 @@ exports.confirmEmail = (req, res) => {
 }
 
 exports.resetPassword = (req, res) => {
-    const email = req.params.email
+    const id = req.params.id
     const newPassword = req.body.newPassword
-    Users.findOneAndUpdate({email:email}, {password:newPassword}, {new:true})
-    .then((result) => {
-        console.log("Password reset successful")
-        res.status(200).json({message:"reset_success"})
-    })
-    .catch((err) => {
-        console.log(err)
-        res.status(500).json({message:"internal_error"})
+    console.log(newPassword)
+    bcrypt.hash(newPassword, 8, (err, hash) => {
+        if (err) {
+            console.log(err)
+            res.status(500).json({message:"internal_error"})
+        }else {
+            Users.findOneAndUpdate({_id:id}, {password:hash}, {new:true})
+            .then((result) => {
+                console.log("Password reset successful", result)
+                res.status(200).json({message:"reset_success"})
+            })
+            .catch((err) => {
+                console.log(err)
+                res.status(500).json({message:"internal_error"})
+            })
+        }
     })
 }

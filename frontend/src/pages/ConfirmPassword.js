@@ -8,7 +8,7 @@ const ConfirmPassword = () => {
     const [resetPasswordError, setResetPasswordError] = useState("")
     const [resetPasswordSuccess, setResetPasswordSuccess] = useState("")
 
-    const email = useParams()
+    const { id } = useParams()
     const navigate = useNavigate()
 
     const handleResetPassword = (e) => {
@@ -20,7 +20,7 @@ const ConfirmPassword = () => {
         }else if (newPassword !== confirmPassword) {
             setResetPasswordError("Your passwords do not match")
         }else {
-            fetch("/api/users/reset/" + email, {
+            fetch("/api/users/reset/" + id, {
                 method:'PUT',
                 headers:{
                     "Content-type":"application/json"
